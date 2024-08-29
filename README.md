@@ -44,11 +44,11 @@ ax = az.plot_forest(
     If multiple_segmentations=True the shape must be:  
     (dim_1, dim_2, ..., dim_N, segmentation, rater).  
 - __w: 'hierarchical', [0,1] or array of [0,1] elements, default='hierarchical'__    
-    This is the prior probability for the ground truth of containing label 1.  
+    This is the prior probability for the ground truth of containing the structure (label=1).  
     If it is 'hierarchical', this probability will be considered as a random variable and it will be  estimated from the sampling.  
-    If it is a value between 0 and 1 all the voxels of the ground truth will have the same probability.  
-    For each voxel of the ground truth can be fixed a specific probability passing an array of values between \[0,1\]. In this case, the w-array must have shape ( dim_1, dim_2, ..., dim_N).  
-- __multiple_segmentations: boolean, default='False'__:  
+    If it is a value between 0 and 1, all the items of the ground truth will have the same probability.  
+    If is is an array, each item of the ground truth will have the the probability specified by the array. In this case, the w-array must have shape ( dim_1, dim_2, ..., dim_N).  
+- __multiple_segmentations: boolean, default=False__:  
     Set to 'True' if the raters have made multiple segmentations for the same input. In this case, the data has to have shape (dim_1, dim_2, ..., dim_N, segmentation, rater).  
 - __alpha_p: int, array of int, optional__:  
     Number of true positives.  
@@ -62,7 +62,7 @@ ax = az.plot_forest(
     Number of labels 1 that are expected to be in the ground truth.  
 - __beta_w: int, array of int, optional__:  
     Number of labels 0 that are expected to be in the ground truth.  
-__seed: int, array of int, optional__:  
+- __seed: int, array of int, optional__:  
     Seed for the sampling algorithm.  
 
 
