@@ -7,13 +7,13 @@ from jax.lax import scan
 class BayesianSTAPLE():
 
   def __init__(self, D, w=None,  alpha_p = 1, beta_p = 1, alpha_q=1, beta_q=1,
-                alpha_w=1, beta_w=1,
-               multiple_segmentations = False, seed= 1701):
+              alpha_w=1, beta_w=1,
+              repeated_labeling = False, seed= 1701):
     self.seed = seed
     self.steps = []
     self.initialization_steps = []
     self.D = jnp.array(D, dtype='byte')
-    if not (multiple_segmentations): self.D = jnp.expand_dims(D, axis=-2)
+    if not (repeated_labeling): self.D = jnp.expand_dims(D, axis=-2)
     T_shape = list(self.D.shape)
     T_shape[-1] = 1
     T_shape[-2] = 1
