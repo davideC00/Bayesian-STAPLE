@@ -153,3 +153,7 @@ class BayesianSTAPLE():
     data = xr.concat(traces, 'chain')
     return data
 
+  def get_ground_truth(self, sample):
+    return sample.T.mean(axis=self.T_shape[0:-2])
+
+
