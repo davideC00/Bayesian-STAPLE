@@ -40,23 +40,16 @@ ax = az.plot_forest(
 - __D: array of {0,1} elements__   
     Raters' labels. This array must have this shape:  
     ( dim_1, dim_2, ..., dim_N, rater).  
-    The first N dimensions refer to the data labeled by  
-    the raters.  
+    The first N dimensions refer to the data labeled by the raters.    
     If repeated_labeling=True the shape must be:  
     (dim_1, dim_2, ..., dim_N, labeling_iteration,  
     rater).  
 - __w: 'hierarchical', [0,1] or array of [0,1] elements, default='hierarchical'__    
-    If it is "hierarchical", this probability will be
-    considered as a random variable and it will be
-    estimated from the sampling.  
-    If it is a value between 0 and 1, all the items of the
-    ground truth will have the same probability.  
-    If it is an array, each item of the ground truth will
-    have the probability specified by the array. In this
-    case, the w-array must have shape ( dim_1,
-    dim_2, ..., dim_N).  
+    If it is "hierarchical", this probability will be considered as a random variable and it will be estimated from the sampling.  
+    If it is a value between 0 and 1, all the items of the ground truth will have the same probability.  
+    If it is an array, each item of the ground truth will have the probability specified by the array. In this case, the w-array must have shape ( dim_1, dim_2, ..., dim_N).  
 - __repeated_labeling: boolean, default=False__:  
-    Set to 'True' if the raters have made multiple segmentations for the same input. In this case, the data has to have shape (dim_1, dim_2, ..., dim_N, segmentation, rater).  
+    Set to 'True' if the raters have made labeled multiple times for the same input. In this case, the data has to have shape (dim_1, dim_2, ..., dim_N, labeling_iteration, rater). 
 - __alpha_p: int, array of int, optional__:  
     Number of true positives.  
 - __beta_p: int, array of int, optional__:  
