@@ -42,8 +42,7 @@ ax = az.plot_forest(
     ( dim_1, dim_2, ..., dim_N, rater).  
     The first N dimensions refer to the data labeled by the raters.    
     If repeated_labeling=True the shape must be:  
-    (dim_1, dim_2, ..., dim_N, labeling_iteration,  
-    rater).  
+    (dim_1, dim_2, ..., dim_N, labeling_iteration, rater).  
 - __w: 'hierarchical', [0,1] or array of [0,1] elements, default='hierarchical'__    
     If it is "hierarchical", this probability will be considered as a random variable and it will be estimated from the sampling.  
     If it is a value between 0 and 1, all the items of the ground truth will have the same probability.  
