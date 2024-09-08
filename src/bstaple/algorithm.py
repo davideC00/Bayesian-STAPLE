@@ -2,7 +2,6 @@ import jax.numpy as jnp
 from jax import random
 import xarray as xr
 from jax_tqdm import scan_tqdm
-from jax.lax import scan
 
 class BayesianSTAPLE():
 
