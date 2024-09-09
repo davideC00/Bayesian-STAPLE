@@ -11,7 +11,7 @@ class GibbsSampler():
     self.seed = seed
     self.key = jax.random.key(self.seed)
 
-  def initialize_carry(self, key):
+  def _initialize_sampling(self, key):
     carry = self.data
     for var in self.vars:
       carry = {**carry, **var.get_parameters()}
@@ -21,7 +21,7 @@ class GibbsSampler():
     return carry
 
   # Create the sampling function used by the jax.lax.scan
-  def sampling_fun(self):
+  def _sampling_fun(self):
     def wrapper_sampling_fun(carry, tupl):
       _, key = tupl
       draw = {}
@@ -34,7 +34,7 @@ class GibbsSampler():
 
   def sample(self, iterations,  burn_in=0, chains=1):
 
-    sampling_fun = self.sampling_fun()
+    sampling_fun = self._sampling_fun()
     sampling_fun_tqdm = (scan_tqdm(iterations)(sampling_fun)) # progress bar
     sampling_fun_tqdm_jit = jax.jit(sampling_fun_tqdm)
 
@@ -44,7 +44,7 @@ class GibbsSampler():
     traces = []
     for i in range(chains):
 
-      carry = self.initialize_carry(chains_keys[i])
+      carry = self._initialize_sampling(chains_keys[i])
 
       keys = jax.random.split(chains_keys[i], iterations)
       keys = (jnp.arange(iterations), keys)
