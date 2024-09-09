@@ -26,7 +26,7 @@ class BayesianSTAPLE():
     num_experts = D.shape[-1]
     p = RV_p( alpha_p, beta_p, shape=(num_experts,))
     random_vars.append(p)
-    q = RV_q( alpha_p, beta_q, shape=(num_experts,))
+    q = RV_q( alpha_q, beta_q, shape=(num_experts,))
     random_vars.append(q)
 
     self.sampler = GibbsSampler(random_vars, data={'D':D}, seed=seed)
