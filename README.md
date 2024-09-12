@@ -36,7 +36,7 @@ ax = az.plot_forest(
   ) 
 ```
 
-## Class Parameters
+## Arguments
 - __D: array of {0,1} elements__   
     Raters' labels. This array must have this shape:  
     ( dim_1, dim_2, ..., dim_N, rater).  
