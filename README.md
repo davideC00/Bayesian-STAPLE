@@ -1,7 +1,7 @@
 # Bayesian STAPLE
 An algorithm to estimate the ground truth and performance parameter from a set of raters' segmentations.
 
-## Installation (WIP)
+## Installation
 
 ```
 pip install bayesian-staple
