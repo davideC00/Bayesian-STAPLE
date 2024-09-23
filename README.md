@@ -23,7 +23,7 @@ trace = bayesianSTAPLE.sample(draws=10000, burn_in=1000, chains=3)
 ```
 Extract the estimated ground truth:
 ```
-probabilistic_ground_truth = trace.T.mean(axis=(0,1)).values
+soft_ground_truth = trace.T.mean(axis=(0,1)).values
 ```
 Plot the raters' sensitivities and specifities:
 ```
@@ -48,7 +48,7 @@ ax = az.plot_forest(
     If it is a value between 0 and 1, all the items of the ground truth will have the same probability.  
     If it is an array, each item of the ground truth will have the probability specified by the array. In this case, the w-array must have shape ( dim_1, dim_2, ..., dim_N).  
 - __repeated_labeling: boolean, default=False__:  
-    Set to 'True' if the raters have made labeled multiple times for the same input. In this case, the data has to have shape (dim_1, dim_2, ..., dim_N, labeling_iteration, raters). 
+    Set to 'True' if the raters have made labeled multiple times for the same input. In this case, the data has to have shape (dim_1, dim_2, ..., dim_N, iterations, raters). 
 - __alpha_p: int, array of int, optional__:  
     Number of true positives.  
 - __beta_p: int, array of int, optional__:  
