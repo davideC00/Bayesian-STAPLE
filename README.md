@@ -4,7 +4,7 @@ An algorithm to estimate the ground truth and performance parameter from a set o
 ## Installation
 
 ```
-pip install bayesian-staple
+pip install bstaple
 ```
 
 ## Example of usage
