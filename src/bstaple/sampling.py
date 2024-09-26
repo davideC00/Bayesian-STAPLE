@@ -32,10 +32,10 @@ class GibbsSampler():
       return (carry), (draw)
     return wrapper_sampling_fun
 
-  def sample(self, iterations,  burn_in=0, chains=1):
+  def sample(self, draws,  burn_in=0, chains=1):
 
     sampling_fun = self._sampling_fun()
-    sampling_fun_tqdm = (scan_tqdm(iterations)(sampling_fun)) # progress bar
+    sampling_fun_tqdm = (scan_tqdm(draws)(sampling_fun)) # progress bar
     sampling_fun_tqdm_jit = jax.jit(sampling_fun_tqdm)
 
     key = jax.random.key(self.seed)
@@ -46,16 +46,16 @@ class GibbsSampler():
 
       carry = self._initialize_sampling(chains_keys[i])
 
-      keys = jax.random.split(chains_keys[i], iterations)
-      keys = (jnp.arange(iterations), keys)
+      keys = jax.random.split(chains_keys[i], draws)
+      keys = (jnp.arange(draws), keys)
       _, sample = jax.lax.scan(sampling_fun_tqdm_jit, carry, keys)
 
       chain_trace = {}
       for var in self.vars:
-        coords =  {"draw": range(iterations), **var.coords}
+        coords =  {"draw": range(draws), **var.coords}
         chain_trace[var.name] = xr.DataArray(sample[var.name], coords=coords).squeeze(drop=True)
       chain_trace = xr.Dataset(chain_trace)
-      chain_trace = chain_trace.isel(draw=range(burn_in,iterations))
+      chain_trace = chain_trace.isel(draw=range(burn_in,draws))
       chain_trace = chain_trace.expand_dims(dim={"chain": [i]}, axis=0)
       traces.append(chain_trace)
 

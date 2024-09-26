@@ -1,5 +1,6 @@
 import jax.numpy as jnp
-from bstaple import RV_w, RV_T, RV_p, RV_q, GibbsSampler
+from .random_vars import RV_w, RV_T, RV_p, RV_q
+from .sampling import GibbsSampler
 
 class BayesianSTAPLE():
 
@@ -35,6 +36,6 @@ class BayesianSTAPLE():
   def get_ground_truth(self, sample):
     return sample.T.mean(axis=self.T_shape[0:-2])
 
-  def sample(self, iterations,  burn_in=0, chains=1):
-    self.sample = self.sampler.sample(iterations, burn_in, chains)
+  def sample(self, draws,  burn_in=0, chains=1):
+    self.sample = self.sampler.sample(draws, burn_in, chains)
     return self.sample
