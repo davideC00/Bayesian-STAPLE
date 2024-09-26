@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bstaple"
-version = "0.0.3"
+version = "0.0.4"
 description = "Bayesian version of STAPLE"
 authors = [
     "Davide Cazzorla <davide.cazzorla@uniba.it>",
