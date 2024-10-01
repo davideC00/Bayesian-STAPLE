@@ -1,5 +1,5 @@
 # Bayesian STAPLE
-An algorithm to estimate the ground truth and performance parameter from a set of raters' segmentations.
+An algorithm that merges raters' labelings and estimates a ground truth and the performance parameters of each rater.  
 
 ## Installation
 
@@ -23,7 +23,7 @@ trace = bayesianSTAPLE.sample(draws=10000, burn_in=1000, chains=3)
 ```
 Extract the estimated ground truth:
 ```
-soft_ground_truth = trace.T.mean(axis=(0,1)).values
+soft_ground_truth = bayesianSTAPLE.get_ground_truth(trace)
 ```
 Plot the raters' sensitivities and specifities:
 ```
