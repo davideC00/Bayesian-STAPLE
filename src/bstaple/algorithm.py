@@ -8,14 +8,15 @@ class BayesianSTAPLE():
               alpha_w=1, beta_w=1,
               repeated_labeling = False, seed= 1701):
     D = jnp.array(D, dtype='byte')
-    if not (repeated_labeling): D = jnp.expand_dims(D, axis=-2) # add void dimension to D
+    if not (repeated_labeling): D = jnp.expand_dims(D, axis=-2) # add void dimension for repeated labeling data
 
     random_vars = []
 
     T_shape = list(D.shape)
-    T_shape[-1] = 1
-    T_shape[-2] = 1
+    T_shape[-1] = 1 # expert dimension 
+    T_shape[-2] = 1 # repeated labeling dimension
     T_shape = tuple(T_shape)
+    
     if w == None:
       # hierarchical model
       w = RV_w(alpha_w, beta_w, shape=(1,)) 
