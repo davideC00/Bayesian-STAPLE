@@ -35,7 +35,7 @@ class BayesianSTAPLE():
 
 
   def get_ground_truth(self, sample):
-    return sample.T.mean(axis=self.T_shape[0:-2])
+    return sample.T.mean(axis=(0,1)) # calculate the mean for each data item. The mean is calculated along draw dimension (axis 0) and chain dimension (axis 1)
 
   def sample(self, draws,  burn_in=0, chains=1):
     self.sample = self.sampler.sample(draws, burn_in, chains)
