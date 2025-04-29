@@ -65,6 +65,12 @@ ax = az.plot_forest(
     Seed for the sampling algorithm.  
 
 
+## Testing the library
 
+Point to the directory and run in the shell:
+```
+poetry install
+poetry run python ./tests/test_module.py
+```
  
 
