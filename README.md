@@ -75,8 +75,8 @@ poetry run python ./tests/test_module.py
 ```
 
 
-## Cite 
-If you use the library please cite our papers:
+## Cite this work
+If you use this library, please cite our papers:
 ```
 @article{Mencar_Cazzorla_2025,
     title={Bayes-STAPLE: a python module for Bayesian label fusion},
