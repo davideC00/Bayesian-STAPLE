@@ -35,6 +35,7 @@ ax = az.plot_forest(
     combined=True
   ) 
 ```
+For other exaples, check the paper of the library: [Link](https://ojs.unito.it/index.php/JAS/article/view/11095).
 
 ## Arguments
 - __D: array of {0,1} elements__   
@@ -72,5 +73,41 @@ Point to the directory and run in the shell:
 poetry install
 poetry run python ./tests/test_module.py
 ```
- 
+
+
+## Cite 
+If you use the library please cite our papers:
+```
+@article{Mencar_Cazzorla_2025,
+    title={Bayes-STAPLE: a python module for Bayesian label fusion},
+    volume={2}, url={https://ojs.unito.it/index.php/JAS/article/view/11095},
+    DOI={10.13135/3103-1935/11095},
+    number={1},
+    journal={Journal of Approximation Software},
+    author={Mencar, Corrado and Cazzorla, Davide},
+    year={2025},
+    month={Mar.}
+}
+
+
+
+@inproceedings{moser_uncertainty_2024,
+	location = {Cham},
+	title = {Uncertainty Estimation of Raters’ Performance and Ground Truth Through a Bayesian Extension of {STAPLE}},
+	volume = {2169},
+	isbn = {978-3-031-68301-5 978-3-031-68302-2},
+	url = {https://link.springer.com/10.1007/978-3-031-68302-2_8},
+	doi = {10.1007/978-3-031-68302-2_8},
+	series = {Communications in Computer and Information Science},
+	pages = {91--101},
+	booktitle = {Database and Expert Systems Applications - {DEXA} 2024 Workshops},
+	publisher = {Springer Nature Switzerland},
+	author = {Cazzorla, Davide and Mencar, Corrado},
+	editor = {Moser, Bernhard and Fischer, Lukas and Mashkoor, Atif and Sametinger, Johannes and Glock, Anna-Christina and Mayr, Michael and Luftensteiner, Sabrina},
+	urldate = {2025-08-29},
+	date = {2024},
+}
+
+```
+
 
