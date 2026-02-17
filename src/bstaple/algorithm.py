@@ -17,7 +17,7 @@ class BayesianSTAPLE():
     T_shape[-2] = 1 # repeated labeling dimension
     T_shape = tuple(T_shape)
     
-    if w == None:
+    if w is None:
       # hierarchical model
       w = RV_w(alpha_w, beta_w, shape=(1,)) 
       random_vars.append(w) 
